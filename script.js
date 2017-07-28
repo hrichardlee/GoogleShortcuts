@@ -9,17 +9,19 @@
         if (focus) {link.focus(); }
         return link;
     };
-    key('⌘+return', function(ev) {
+    key('⌘+return,ctrl+return', function(ev) {
         var link = select();
         window.open(link.attr('href'));
         ev.stopPropagation();
         ev.preventDefault();
+        return false;
     });
     key('return', function(ev) {
         var link = select();
         location.href = link.attr('href');
         ev.stopPropagation();
         ev.preventDefault();
+        return false;
     });
 
     var node = null;
@@ -35,23 +37,28 @@
         });
     });
 
-    key('j', function(ev) {
+    key('down', function(ev) {
         if (idx < $('h3.r a').length-1) {
             idx++;
             select(true);
         }
         ev.stopPropagation();
+        ev.preventDefault();
+        return false;
     });
-    key('k', function(ev) {
+    key('up', function(ev) {
         if (idx > 0) {
             idx--;
             select(true);
         }
         ev.stopPropagation();
+        ev.preventDefault();
+        return false;
     });
     key('/', function(ev) {
         $('#gbqfq').focus();
         ev.stopPropagation();
         ev.preventDefault();
+        return false;
     });
 })();
